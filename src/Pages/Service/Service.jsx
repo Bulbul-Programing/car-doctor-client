@@ -1,4 +1,4 @@
-
+import swal from 'sweetalert';
 const Service = () => {
 
 
@@ -20,6 +20,14 @@ const Service = () => {
             },
             body: JSON.stringify(product)
         })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged === true){
+                swal("Success", "Your product add", "success");
+                form.reset()
+            }
+            
+            console.log(data)})
     }
 
     
